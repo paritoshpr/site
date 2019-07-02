@@ -1,0 +1,5 @@
+Tree map sorted with size proportional to mean Debt-to-Earnings ratio
+Hover on a state to get more statistics.
+Click on a state to view its colleges with size proportional to their undergrad student pop
+Hover on a university to get more details.
+Color of state and university is based on Debt-to-Earnings ratio

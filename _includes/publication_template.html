@@ -1,0 +1,27 @@
+{% include base_path %}
+
+{% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+  {% assign teaser = site.teaser %}
+{% endif %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+   <p><b>
+        <a href="{{ post.permalink }}"><u>{{ title }}</u></a>
+    </b>
+        {% if post.collection == 'publications' %}
+          {{ post.author}},
+          <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y-%m" }}
+        {% endif %}
+        <a href="{{ base_path }}{{ post.pdf }}">[<u>PDF</u>]</a>
+  </p>
+  </article>
+</div>

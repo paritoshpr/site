@@ -1,0 +1,263 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<div class="wrapper">
+  <div id="slideryear"></div>
+</div>
+<script src="../lib/d3/d3.js"></script>
+<script src="../lib/d3/d3plus.js"></script>
+
+<div id="viz"></div>
+
+<script>
+
+/*{
+  "FIELD1":"UNITID",
+  "FIELD2":"OPEID",
+  "FIELD3":"opeid6",
+  "FIELD4":"INSTNM",
+  "FIELD5":"CITY",
+  "FIELD6":"STABBR",
+  "FIELD7":"INSTURL",
+  "FIELD8":"NPCURL",
+  "FIELD9":"HCM2",
+  "FIELD10":"PREDDEG",
+  "FIELD11":"CONTROL",
+  "FIELD12":"LOCALE",
+  "FIELD13":"HBCU",
+  "FIELD14":"PBI",
+  "FIELD15":"ANNHI",
+  "FIELD16":"TRIBAL",
+  "FIELD17":"AANAPII",
+  "FIELD18":"HSI",
+  "FIELD19":"NANTI",
+  "FIELD20":"MENONLY",
+  "FIELD21":"WOMENONLY",
+  "FIELD22":"RELAFFIL",
+  "FIELD23":"SATVR25",
+  "FIELD24":"SATVR75",
+  "FIELD25":"SATMT25",
+  "FIELD26":"SATMT75",
+  "FIELD27":"SATWR25",
+  "FIELD28":"SATWR75",
+  "FIELD29":"SATVRMID",
+  "FIELD30":"SATMTMID",
+  "FIELD31":"SATWRMID",
+  "FIELD32":"ACTCM25",
+  "FIELD33":"ACTCM75",
+  "FIELD34":"ACTEN25",
+  "FIELD35":"ACTEN75",
+  "FIELD36":"ACTMT25",
+  "FIELD37":"ACTMT75",
+  "FIELD38":"ACTWR25",
+  "FIELD39":"ACTWR75",
+  "FIELD40":"ACTCMMID",
+  "FIELD41":"ACTENMID",
+  "FIELD42":"ACTMTMID",
+  "FIELD43":"ACTWRMID",
+  "FIELD44":"SAT_AVG",
+  "FIELD45":"SAT_AVG_ALL",
+  "FIELD46":"PCIP01",
+  "FIELD47":"PCIP03",
+  "FIELD48":"PCIP04",
+  "FIELD49":"PCIP05",
+  "FIELD50":"PCIP09",
+  "FIELD51":"PCIP10",
+  "FIELD52":"PCIP11",
+  "FIELD53":"PCIP12",
+  "FIELD54":"PCIP13",
+  "FIELD55":"PCIP14",
+  "FIELD56":"PCIP15",
+  "FIELD57":"PCIP16",
+  "FIELD58":"PCIP19",
+  "FIELD59":"PCIP22",
+  "FIELD60":"PCIP23",
+  "FIELD61":"PCIP24",
+  "FIELD62":"PCIP25",
+  "FIELD63":"PCIP26",
+  "FIELD64":"PCIP27",
+  "FIELD65":"PCIP29",
+  "FIELD66":"PCIP30",
+  "FIELD67":"PCIP31",
+  "FIELD68":"PCIP38",
+  "FIELD69":"PCIP39",
+  "FIELD70":"PCIP40",
+  "FIELD71":"PCIP41",
+  "FIELD72":"PCIP42",
+  "FIELD73":"PCIP43",
+  "FIELD74":"PCIP44",
+  "FIELD75":"PCIP45",
+  "FIELD76":"PCIP46",
+  "FIELD77":"PCIP47",
+  "FIELD78":"PCIP48",
+  "FIELD79":"PCIP49",
+  "FIELD80":"PCIP50",
+  "FIELD81":"PCIP51",
+  "FIELD82":"PCIP52",
+  "FIELD83":"PCIP54",
+  "FIELD84":"DISTANCEONLY",
+  "FIELD85":"UGDS",
+  "FIELD86":"UGDS_WHITE",
+  "FIELD87":"UGDS_BLACK",
+  "FIELD88":"UGDS_HISP",
+  "FIELD89":"UGDS_ASIAN",
+  "FIELD90":"UGDS_AIAN",
+  "FIELD91":"UGDS_NHPI",
+  "FIELD92":"UGDS_2MOR",
+  "FIELD93":"UGDS_NRA",
+  "FIELD94":"UGDS_UNKN",
+  "FIELD95":"PPTUG_EF",
+  "FIELD96":"CURROPER",
+  "FIELD97":"NPT4_PUB",
+  "FIELD98":"NPT4_PRIV",
+  "FIELD99":"NPT41_PUB",
+  "FIELD100":"NPT42_PUB",
+  "FIELD101":"NPT43_PUB",
+  "FIELD102":"NPT44_PUB",
+  "FIELD103":"NPT45_PUB",
+  "FIELD104":"NPT41_PRIV",
+  "FIELD105":"NPT42_PRIV",
+  "FIELD106":"NPT43_PRIV",
+  "FIELD107":"NPT44_PRIV",
+  "FIELD108":"NPT45_PRIV",
+  "FIELD109":"PCTPELL",
+  "FIELD110":"RET_FT4",
+  "FIELD111":"RET_FTL4",
+  "FIELD112":"RET_PT4",
+  "FIELD113":"RET_PTL4",
+  "FIELD114":"PCTFLOAN",
+  "FIELD115":"UG25abv",
+  "FIELD116":"GRAD_DEBT_MDN_SUPP",
+  "FIELD117":"GRAD_DEBT_MDN10YR_SUPP",
+  "FIELD118":"RPY_3YR_RT_SUPP",
+  "FIELD119":"C150_4_POOLED_SUPP",
+  "FIELD120":"C200_L4_POOLED_SUPP",
+  "FIELD121":"md_earn_wne_p10",
+  "FIELD122":"gt_25k_p6"
+}*/
+
+  var college_info = []
+
+  d3.json("Data.json", function(error, data) {
+
+    var count =0
+    //graph = {"nodes" : [], "links" : []};
+    num_years =0
+    data.forEach(function (d) {
+    if (count == 0)
+    { count = count +1;
+    }
+    if (+d.FIELD6!=0  && count !=0)
+      {
+        if(!isNaN(+d.FIELD116) && !isNaN(+d.FIELD121))
+        {
+          if (!d.FIELD116 || !d.FIELD121 || +d.FIELD10 <= 2 || +d.FIELD84 === 1){// || +d.FIELD85 <= 1000){// || d.FIELD110 <= 0.8){
+
+          }
+          else{
+            //sat_avg=isNaN(+d.FIELD44)?0:+d.FIELD44;
+            der=+d.FIELD116/+d.FIELD121;
+            if(der>1){
+              console.log(d.FIELD4);
+            }
+            if(!isNaN(+d.FIELD109)){
+                  college_info.push({"Mean Graduating Debt":+d.FIELD116,"Mean Graduate Earnings":+d.FIELD121,"Pell Students(%)":+d.FIELD109,"Avg SAT score":d.FIELD44,"No Of Undergraduates":+d.FIELD85,"Debt-to-Earnings-Ratio":der,"Name":d.FIELD4,"group":d.FIELD6.toUpperCase()});
+            }
+            else{//,"Avg Sat":"N.A."
+                  college_info.push({"Mean Graduating Debt":+d.FIELD116,"Mean Graduate Earnings":+d.FIELD121,"Pell Students(%)":+d.FIELD109,"Avg SAT score":"N.A.","No Of Undergraduates":+d.FIELD85,"Debt-to-Earnings-Ratio":der,"Name":d.FIELD4,"group":d.FIELD6.toUpperCase()});
+            }
+          }
+        }
+      }
+    });
+    //console.log(college_info);
+    callBackFunc(college_info);
+    });
+
+
+  function callBackFunc(college_info){
+  //console.log(college_info);
+  var defaults = {
+  "width": 1200,
+  "height": 625,
+  "resize": true
+}
+
+
+//  d3plus.textwrap().config(defaults);
+  var visualization = d3plus.viz()
+    .container("#viz")
+    .config(defaults)
+    .data(college_info)
+    .type("tree_map")
+    //.type("scatter")
+    .id(["group","Name"])
+    .aggs({"Mean Graduating Debt":"mean"})
+    .aggs({"Mean Graduate Earnings":"mean"})
+    .aggs({"Debt-to-Earnings-Ratio":"mean"})
+    .aggs({"Pell Students(%)": function(data){
+          var count = 0;
+          var sum =0;
+          data.forEach(function (d){
+                //console.log(d["Avg Sat"]);
+                if(d["Pell Students(%)"]!=0 && !isNaN(d["Pell Students(%)"]))
+                {
+
+                  count = count+1;
+                  sum=sum+d["Pell Students(%)"];
+                }
+          });
+          avg =sum/count;
+          return count>0?(avg):0;
+      }
+
+    })
+    //.size(14)
+    .size("Debt-to-Earnings-Ratio")
+    //.labels({"resize": false, "font": {"size": 14}})
+    .depth(0, function(d, viz){
+              viz.size(d === 0 ? "Debt-to-Earnings-Ratio" :"No Of Undergraduates");
+              //viz.labels(d===0? {"resize": false, "font": {"size": 14}}: {"font": {"size": 14}})
+              //console.log(d);
+    })
+    //.size({"threshold":2000})
+    //.labels({"resize": false, "font": {"size": 14}})
+    .labels({"font": {"size": 14}})
+    .tooltip({"children":false})
+    .tooltip(["Debt-to-Earnings-Ratio","Avg SAT score","Pell Students(%)","Mean Graduating Debt","Mean Graduate Earnings"])
+    .color({"value":"Debt-to-Earnings-Ratio"})
+    .format({
+      "text": function(text, params) {
+
+        if (text.length == 2) {
+          return text.toUpperCase();
+        }
+        else {
+          return d3plus.string.title(text, params);
+        }
+
+      }
+    })
+    //.color({"value":"Pell Students(%)"})
+    //.color({"heatmap":["#ffffff","#3333ff"]})
+    .color({"heatmap":["#ffffff","#ffb399","#cc3300"]})
+    //.color({"heatmap":["#ffffff","#ff9980","#ff3300"]})
+    //.legend({"labels":false})
+    .messages( "Loading..." )
+    .title("College Info")
+    .legend({"filters": true})
+    .x("Mean Graduating Debt")
+    .y("Mean Graduate Earnings")
+    //.shape("")
+    //.nodes({"overlap":0.5})
+    .ui([
+      {
+        //"label": "Alert",
+        //"type": "text",
+        "value"  : ["Mean Annual Graduating Debt-to-Earnings Ratio"]
+      }
+    ])
+    .zoom({"scroll":true})
+    .draw()
+  }
+</script>
