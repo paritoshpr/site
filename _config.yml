@@ -6,12 +6,13 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
+#https://paritoshpr.github.io
 locale                   : "en-US"
 title                    : "paritosh ramanan"
 title_separator          : "-"
 name                     : &name "Paritosh P. Ramanan"
 description              : &description "personal description"
-url                      : https://paritoshpr.github.io/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://paritoshpr.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : ""
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -92,7 +93,7 @@ author:
   flickr           :
   facebook         : "paritosh.ramanan"
   foursquare       :
-  github           : "pelican91"
+  github           : "paritoshpr"
   google_plus      :
   keybase          :
   instagram        :

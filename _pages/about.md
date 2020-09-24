@@ -11,10 +11,12 @@ redirect_from:
 I'm Paritosh, a 5th year PhD student in Computational Science and Engineering at the [School of Industrial and Systems Engineering at Georgia Tech](https://ww.isye.gatech.edu). 
 I'm being co-advised by [Prof. Nagi Gebraeel](https://www2.isye.gatech.edu/people/faculty/Nagi_Gebraeel/) from Industrial Engineering and [Prof. Edmond Chow](https://www.edmondchow.com) from Computational Science.
 At Georgia Tech my research is on asynchronous solutions to large-scale decentralized optimization problems with applications to power systems, machine learning and linear solvers.
+I've lately also started looking at the blockchain as a decentralization tool. Turns out, it has some interesting features that make for some exciting applications. More details coming soon! 
 
 Updates
 ======
-
+- **09/20** My paper on decentralized, blockchain based federated learning got accepted at IEEE Blockchain 2020!
+- **10/19** I'm going to be speaking at INFORMS 2019 at Seattle, WA on Large Scale Decentralized Maintenance and Operations. See you all there.
 - **05/19** I'll be spending the summer in the Bay Area interning at NEC Labs of America under [Dr. Kiyoshi Nakayama](https://www.ics.uci.edu/~knakayam/). We are working on decentralized blockchain algorithms for large scale Federated Learning. Super excited!
 - **05/19** I gave a talk on [Conflict Reduction and Deterrence in the Power Grid of the Future: A Cyber Security Perspective](files/SNSPSpringPresentation.pdf) at the United States Special Operations Command Centre in Tampa, FL as a Sam Nunn Fellow.
 - **04/19** I finally defended my Ph.D proposal. Officially a PhD candidate!
