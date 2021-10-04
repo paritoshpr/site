@@ -18,6 +18,8 @@ More details can be found [here](https://blockalytics.medium.com/cost-implicatio
 
 Updates
 ======
+- **08/21** My paper on Blockchain based Replay Attack detection got accepted in IEEE Transactions on Systems, Man and Cybernetics : Systems! 
+- **05/21** My paper on Decentralized Maintenance and Operations for Large Scale Power Systems got accepted in IEEE Transactions on Power Systems.
 - **11/20** I delivered talks at IISE, INFORMS and at IEEE Blockchain 2020 in a span of a week. Phew! Busy month.
 - **10/20** Starting as a NASA HOME PostDoc @ Georgia Tech. Working on using Federated Learning for Smart Habitats on Mars!
 - **10/20** I graduated! Finally a Dr.!  
