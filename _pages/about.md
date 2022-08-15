@@ -8,7 +8,9 @@ redirect_from:
   - /about.html
 ---
 
-I'm Paritosh, a NASA HOME Postdoctoral Fellow at Georgia Tech's School of Industrial and Systems Engineering. I'm working on using a Vertical Federated Learning aspects to make any future habitats on Mars smarter and more resilient to failures!  
+I am an Assistant Professor in the School of Industrial and Systems Engineering at Oklahoma State University starting Fall 2022.
+
+Prior to this I was a NASA HOME Postdoctoral Fellow at Georgia Tech's School of Industrial and Systems Engineering. I worked on using a Vertical Federated Learning aspects to make future habitats on Mars smarter and more resilient to failures!  
 
 I got my PhD. in Computational Science and Engineering at the [School of Industrial and Systems Engineering at Georgia Tech](https://ww.isye.gatech.edu). 
 I was co-advised by [Prof. Nagi Gebraeel](https://www2.isye.gatech.edu/people/faculty/Nagi_Gebraeel/) from Industrial Engineering and [Prof. Edmond Chow](https://www.edmondchow.com) from Computational Science.
@@ -18,6 +20,8 @@ More details can be found [here](https://blockalytics.medium.com/cost-implicatio
 
 Updates
 ======
+- **04/22** I accepted a Tenure Track, Assistant Professor position at the School of Industrial Engineering and Management at Oklahoma State University!
+- **10/21** I gave a talk at INFORMS 2021 in Anaheim, CA on Vertical Federated Learning.
 - **08/21** My paper on Blockchain based Replay Attack detection got accepted in IEEE Transactions on Systems, Man and Cybernetics : Systems! 
 - **05/21** My paper on Decentralized Maintenance and Operations for Large Scale Power Systems got accepted in IEEE Transactions on Power Systems.
 - **11/20** I delivered talks at IISE, INFORMS and at IEEE Blockchain 2020 in a span of a week. Phew! Busy month.
